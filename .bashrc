@@ -9,11 +9,21 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-if [ -d /opt/pic32mx/bin ] ; then
-	export PATH=$PATH:/opt/pic32mx/bin
-fi
+
+alias ls="ls --color"
+
+win(){
+    mkdir -p ~/Windows;
+    if ! mount | grep /mnt/dev/sda4 > /dev/null ; then
+        sudo mount -t ntfs -o umask=0770,remove_hiberfile /dev/sda4 ~/Windows/
+    fi
+    nautilus ~/Windows/Users/Diogo\ Ferreira/Desktop/ &
+}
+
+source ~/.dotfiles/.git-completion
 
 # Defining foreground variables for the prompt
+
 P_BLACK="\[$(tput setaf 0)\]"
 P_RED="\[$(tput setaf 1)\]"
 P_GREEN="\[$(tput setaf 2)\]"
@@ -28,10 +38,11 @@ P_RESET="\[$(tput sgr0)\]"
 
 # Setting a fancy prompt for the current user
 
-export PS1="$P_GREEN╭─$P_BOLD $P_RED\u$P_BLUE@$P_POWDER_BLUE\h: $P_YELLOW\w $P_MAGENTA ["'$(basename "$(git symbolic-ref HEAD 2>/dev/null)")$([[ ! -z "$(git status --porcelain 2>/dev/null)" ]] && echo " ✘")'"]\n$P_GREEN\
+export PS1="$P_BOLD$P_GREEN╭── $P_RED\u$P_BLUE@$P_POWDER_BLUE\h: $P_YELLOW\w $P_MAGENTA ["'$(basename "$(git symbolic-ref HEAD 2>/dev/null)")$([[ ! -z "$(git status --porcelain 2>/dev/null)" ]] && echo " ✘")'"]\n$P_GREEN\
 ╰──$ $P_RESET"
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# Preserve path in new window
+. /etc/profile.d/vte.sh

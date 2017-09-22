@@ -1,14 +1,9 @@
-# .bash_profile
-
-# Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
-fi
+#
+# ~/.bash_profile
+#
 
 # User specific environment and startup programs
+[[ -f ~/.bashrc ]] && . ~/.bashrc
 
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
-
-export PATH
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 

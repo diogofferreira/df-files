@@ -1,0 +1,77 @@
+# Conkyrc by Hund @ ebupof.deviantart.com
+
+background no
+xftfont 123:size=8
+xftalpha 0.8
+update_interval 1.5
+total_run_times 0
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 220 5
+maximum_width 400
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color white
+default_shade_color black
+alignment top_right
+gap_x 12
+gap_y 65
+no_buffers yes
+cpu_avg_samples 2
+override_utf8_locale no
+uppercase yes
+
+TEXT
+$stippled_hr
+Arch Linux @Diogo Ferreira
+$stippled_hr
+
+Kernel: $alignr $kernel
+
+$stippled_hr
+SYSTEM
+$stippled_hr
+
+CPU1: ${alignr} ${cpu cpu1}%
+CPU2: ${alignr} ${cpu cpu2}%
+CPU3: ${alignr} ${cpu cpu3}%
+CPU4: ${alignr} ${cpu cpu4}%
+${cpugraph 20}
+Load: $alignr $loadavg
+Processes: $alignr $processes
+Running: $alignr $running_processes
+
+RAM: $alignr $mem/$memmax
+${membar 3}
+Swap: $alignr $swap / $swapmax
+${swapbar 3}
+
+$stippled_hr
+TOP
+$stippled_hr
+
+
+Name $alignr PID     CPU%   MEM%
+${color #B22222} ${top name 1} $alignr ${top pid 1} ${top cpu 1} ${top mem 1}$color
+ ${top name 2} $alignr ${top pid 2} ${top cpu 2} ${top mem 2}
+ ${top name 3} $alignr ${top pid 3} ${top cpu 3} ${top mem 3}
+
+Mem usage$color
+${color #B22222} ${top_mem name 1} $alignr ${top_mem pid 1} ${top_mem cpu 1} ${top_mem mem 1}$color
+ ${top_mem name 2} $alignr ${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2}
+ ${top_mem name 3} $alignr ${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3}
+
+Temperature
+${color #B22222} CPU: ${alignr}${acpitemp}C$color
+
+$stippled_hr
+HDD
+$stippled_hr
+
+ROOT: $alignr ${fs_free /} / ${fs_size /}
+${fs_bar 3 /}
