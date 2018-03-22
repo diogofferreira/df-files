@@ -1,77 +1,86 @@
-# Conkyrc by Hund @ ebupof.deviantart.com
-
-background no
-xftfont 123:size=8
-xftalpha 0.8
-update_interval 1.5
+# conky configuration
+##############################################
+# Settings
+##############################################
+background yes
+use_xft yes
+xftfont Liberation Sans:size=9
+xftalpha 1
+xinerama_head 1
+update_interval 0.5
 total_run_times 0
 own_window yes
-own_window_type normal
 own_window_transparent yes
+own_window_type normal
+own_window_argb_visual yes
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 double_buffer yes
-minimum_size 220 5
-maximum_width 400
+maximum_width 270
 draw_shades no
 draw_outline no
 draw_borders no
-draw_graph_borders yes
-default_color white
-default_shade_color black
+draw_graph_borders no
+default_color ffffff
+default_shade_color 000000
+default_outline_color 828282
 alignment top_right
 gap_x 12
-gap_y 65
+gap_y 10
 no_buffers yes
-cpu_avg_samples 2
+uppercase no
+cpu_avg_samples 4
 override_utf8_locale no
-uppercase yes
-
+ 
+##############################################
+#  Output
+##############################################
+ 
 TEXT
-$stippled_hr
-Arch Linux @Diogo Ferreira
-$stippled_hr
+${font sans-serif:bold:size=8}KERNEL ${alignr}$kernel 
+${font sans-serif:bold:size=8}PUBLIC IP: $alignr ${exec wget http://ipinfo.io/ip -qO -}
+${font sans-serif:bold:size=8}PRIVATE IP: $alignr ${addr wlo1}
+${font sans-serif:bold:size=8}UPTIME:$alignr$uptime_short
+ 
+${font sans-serif:bold:size=8}PROCESSORS ${hr 2}
+${font sans-serif:normal:size=8}${cpugraph 0 20,270 FFFF00 FF0000}
+CPU1: ${cpu cpu1}% ${cpubar cpu0}
+CPU2: ${cpu cpu2}% ${cpubar cpu1}
+CPU3: ${cpu cpu3}% ${cpubar cpu2}
+CPU4: ${cpu cpu4}% ${cpubar cpu3}
+ 
+${font sans-serif:bold:size=8}MEMORY ${hr 2}
 
-Kernel: $alignr $kernel
+${font sans-serif:normal:size=8}RAM $alignc $mem / $memmax $alignr $memperc%
+$membar
+SWAP $alignc ${swap} / ${swapmax} $alignr ${swapperc}%
+${swapbar}
+ 
+${font sans-serif:bold:size=8}TOP PROCESSES ${hr 2}
 
-$stippled_hr
-SYSTEM
-$stippled_hr
+${font sans-serif:bold:size=8}NAME${alignc}   PID${alignr}${alignr}% CPU
+${font sans-serif:normal:size=7}${top name 1}${alignc}${top pid 1}${alignr}${top cpu 1}%
+${top name 2}${alignc}${top pid 2}${alignr}${top cpu 2}%
+${top name 3}${alignc}${top pid 3}${alignr}${top cpu 3}%
 
-CPU1: ${alignr} ${cpu cpu1}%
-CPU2: ${alignr} ${cpu cpu2}%
-CPU3: ${alignr} ${cpu cpu3}%
-CPU4: ${alignr} ${cpu cpu4}%
-${cpugraph 20}
-Load: $alignr $loadavg
-Processes: $alignr $processes
-Running: $alignr $running_processes
+${font sans-serif:bold:size=8}NAME${alignc}   PID${alignr}${alignr}% MEM
+${font sans-serif:normal:size=7}${top_mem name 1}${alignc}${top_mem pid 1}${alignr}${top_mem mem 1}%
+${top_mem name 2}${alignc}${top_mem pid 2}${alignr}${top_mem mem 2}%
+${top_mem name 3}${alignc}${top_mem pid 3}${alignr}${top_mem mem 3}%
 
-RAM: $alignr $mem/$memmax
-${membar 3}
-Swap: $alignr $swap / $swapmax
-${swapbar 3}
+${font sans-serif:bold:size=8}NETWORK${font sans-serif:normal:size=8} ${hr 2}
 
-$stippled_hr
-TOP
-$stippled_hr
+Signal: $alignr ${wireless_link_qual_perc wlo1}%
+${downspeedgraph wlo1 20,270 00FF00 0000FF -l}
+Download: ${downspeed wlo1} $alignr Total: ${totaldown wlo1}
+${upspeedgraph wlo1 20,270 FFFF00 FF0000 -l}
+Upload: ${upspeed wlo1} $alignr Total: ${totalup wlo1}
 
 
-Name $alignr PID     CPU%   MEM%
-${color #B22222} ${top name 1} $alignr ${top pid 1} ${top cpu 1} ${top mem 1}$color
- ${top name 2} $alignr ${top pid 2} ${top cpu 2} ${top mem 2}
- ${top name 3} $alignr ${top pid 3} ${top cpu 3} ${top mem 3}
+${font sans-serif:bold:size=8}DISK I/O ${font sans-serif:normal:size=8}${hr 2}
 
-Mem usage$color
-${color #B22222} ${top_mem name 1} $alignr ${top_mem pid 1} ${top_mem cpu 1} ${top_mem mem 1}$color
- ${top_mem name 2} $alignr ${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2}
- ${top_mem name 3} $alignr ${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3}
-
-Temperature
-${color #B22222} CPU: ${alignr}${acpitemp}C$color
-
-$stippled_hr
-HDD
-$stippled_hr
-
-ROOT: $alignr ${fs_free /} / ${fs_size /}
-${fs_bar 3 /}
+${font sans-serif:normal:size=8}Used space $alignc ${fs_used /} / ${fs_size /}
+${fs_bar /}
+Read: $alignr ${diskio_read sda}
+${diskiograph_read sda 20,270 00FF00 0000FF -l}
+Write: $alignr ${diskio_write sda}
+${diskiograph_write sda 20,270 FFFF00 FF0000 -l}
