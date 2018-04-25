@@ -30,6 +30,7 @@ no_buffers yes
 uppercase no
 cpu_avg_samples 4
 override_utf8_locale no
+xinerama_head 0 
  
 ##############################################
 #  Output
@@ -37,16 +38,16 @@ override_utf8_locale no
  
 TEXT
 ${font sans-serif:bold:size=8}KERNEL ${alignr}$kernel 
-${font sans-serif:bold:size=8}PUBLIC IP: $alignr ${exec wget http://ipinfo.io/ip -qO -}
+${font sans-serif:bold:size=8}PUBLIC IP: $alignr ${exec wget http://ipinfo.io/ip -q -o /dev/null -O &> /dev/null}
 ${font sans-serif:bold:size=8}PRIVATE IP: $alignr ${addr wlo1}
 ${font sans-serif:bold:size=8}UPTIME:$alignr$uptime_short
  
 ${font sans-serif:bold:size=8}PROCESSORS ${hr 2}
 ${font sans-serif:normal:size=8}${cpugraph 0 20,270 FFFF00 FF0000}
-CPU1: ${cpu cpu1}% ${cpubar cpu0}
-CPU2: ${cpu cpu2}% ${cpubar cpu1}
-CPU3: ${cpu cpu3}% ${cpubar cpu2}
-CPU4: ${cpu cpu4}% ${cpubar cpu3}
+CPU1: ${cpu cpu1}% ${cpubar cpu1}
+CPU2: ${cpu cpu2}% ${cpubar cpu2}
+CPU3: ${cpu cpu3}% ${cpubar cpu3}
+CPU4: ${cpu cpu4}% ${cpubar cpu4}
  
 ${font sans-serif:bold:size=8}MEMORY ${hr 2}
 
