@@ -28,4 +28,7 @@ source ~/.dotfiles/.git-completion
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-export PKCS11_MODULE=/usr/lib64/opensc-pkcs11.so
+
+# To take advantage of multicore CPUs you can use the MAKEFLAGS variable.
+# For example the equivalent of "make -j8" would be:
+export MAKEFLAGS="-j4"
