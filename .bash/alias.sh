@@ -1,5 +1,6 @@
 # System specific
 alias ls="ls --color"
+alias ll='ls -l --color=auto'
 
 # Development
 alias chrome-dev="google-chrome-stable --disable-web-security --user-data-dir &"

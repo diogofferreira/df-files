@@ -29,7 +29,17 @@ _prompt() {
         printf " $GIT_BRANCH_SYMBOL $branch$marks "
     }
 
+    _virtualenv () {
+        # Python venv info
+        if test -z "$VIRTUAL_ENV" ; then
+            printf ""
+        else
+            printf "(`basename \"$VIRTUAL_ENV\"`) "
+        fi
+    }
+
     _status_color() {
+        # Git status info
         if [ -n "$(git status --porcelain)" ]; then 
             printf "$RED"
         else
@@ -42,12 +52,13 @@ _prompt() {
         PS1+=" in \[$BOLD_GREEN\]\w " # Directory
 
         if git rev-parse --git-dir > /dev/null 2>&1; then
-            PS1+="\[$BOLD_WHITE\]\$(_status_color){$(_git_branch_info)}" # Git Branch Info.
+            # Git branch info
+            PS1+="\[$BOLD_WHITE\]\$(_status_color){$(_git_branch_info)}"
         fi
         
-        PS1+="\n\[$BG_EXIT\]\[$BOLD_WHITE\]╰── $\[$NORMAL\] "
+        PS1+="\n\[$BG_EXIT\]\[$BOLD_WHITE\]╰── $(_virtualenv)$\[$NORMAL\] "
     }
-    
+
     PROMPT_COMMAND=ps1
 }
 
