@@ -48,15 +48,15 @@ _prompt() {
     }
 
     ps1() {
-        PS1="\[$BOLD_WHITE\]╭── \[$BOLD_RED\]\u\[$WHITE\]" # User
-        PS1+=" in \[$BOLD_GREEN\]\w " # Directory
+        PS1="\[$WHITE_BOLD\]╭── \[$GOLD_BOLD\]\u\[$WHITE\]" # User
+        PS1+=" in \[$GREEN_BOLD\]\w " # Directory
 
         if git rev-parse --git-dir > /dev/null 2>&1; then
             # Git branch info
-            PS1+="\[$BOLD_WHITE\]\$(_status_color){$(_git_branch_info)}"
+            PS1+="\[$WHITE\]\$(_status_color){$(_git_branch_info)}\[$NORMAL\]"
         fi
         
-        PS1+="\n\[$BG_EXIT\]\[$BOLD_WHITE\]╰── $(_virtualenv)$\[$NORMAL\] "
+        PS1+="\n\[$NORMAL\]\[$WHITE_BOLD\]╰── $(_virtualenv)$\[$NORMAL\] "
     }
 
     PROMPT_COMMAND=ps1

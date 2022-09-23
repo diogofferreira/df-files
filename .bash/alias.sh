@@ -2,15 +2,31 @@
 alias ls="ls --color"
 alias ll='ls -l --color=auto'
 
-# Development
-alias chrome-dev="google-chrome-stable --disable-web-security --user-data-dir &"
-alias mongo-viegy="mongod --dbpath=/home/diogo/Documents/Development/Viegy/viegy-db/"
+# Laptop + monitor setup management
+function internal_configs() { 
+    rm ~/.Xdefaults 
+    rm ~/.Xresources 
+    rm ~/.xinitrc 
+    ln -f -s ~/.Xdefaults-internal ~/.Xdefaults 
+    ln -f -s ~/.Xresources-internal ~/.Xresources 
+    ln -f -s ~/.xinitrc-internal ~/.xinitrc 
+} 
+  
+function external_configs() { 
+    rm ~/.Xdefaults 
+    rm ~/.Xresources 
+    rm ~/.xinitrc 
+    ln -f -s ~/.Xdefaults-external ~/.Xdefaults 
+    ln -f -s ~/.Xresources-external ~/.Xresources 
+    ln -f -s ~/.xinitrc-external ~/.xinitrc 
+} 
+  
+function startx-internal() { 
+    internal_configs 
+    startx 
+} 
 
-# Misc
-win(){
-    mkdir -p ~/Windows;
-    if ! mount | grep /mnt/dev/sda4 > /dev/null ; then
-        sudo mount -t ntfs -o umask=0770,remove_hiberfile /dev/sda4 ~/Windows/
-    fi
-    thunar ~/Windows/Users/Diogo\ Ferreira/Desktop/ &
-}
+function startx-external() { 
+    external_configs 
+    startx 
+} 
