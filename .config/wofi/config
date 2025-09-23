@@ -1,0 +1,17 @@
+# Main settings
+show=drun
+prompt=Search Apps:
+width=50%
+height=45%
+layer=overlay
+allow_images=true
+allow_markup=false
+term=alacritty
+
+# Point to your custom stylesheet with an ABSOLUTE path
+style=/home/diogo/.config/wofi/style.css
+
+# Other visual settings
+lines=8
+hide_scroll=true
+matching=fuzzy

@@ -1,0 +1,33 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "height": 37,
+    "margin-right": 5,
+    "margin-left": 5, 
+    // Load Modules
+    "include": [
+        "~/.config/waybar/modules.json"
+    ],
+	"modules-left": [
+        "clock",
+        "tray"
+	],
+	"modules-center": [
+		//"hyprland/window",
+        "hyprland/workspaces"
+	],
+    "modules-right": [
+        "battery",
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "disk",
+        "temperature",
+        //"network",
+        "custom/lock_screen",
+        "custom/power"
+	]	
+}

@@ -1,0 +1,65 @@
+/* Import the colors from pywal */
+@import "/home/diogo/.cache/wal/colors-waybar.css";
+
+/* General window styling */
+window {
+    margin: 5px;
+    background-color: @background;
+    border: 2px solid @color2;
+    border-radius: 10px;
+    font-family: "monospace", "Hack Nerd Font";
+    font-size: 14pt;
+}
+
+/* Inner box containing the entries */
+#inner-box {
+    margin: 15px;
+    background-color: transparent;
+}
+
+/* Outer box containing everything */
+#outer-box {
+    margin: 20px;
+    background-color: transparent;
+}
+
+/* Scroll bar */
+#scroll {
+    background-color: transparent;
+}
+
+/* Default text styling */
+#text {
+    color: @foreground;
+}
+
+/* Input box styling */
+#input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: @color0;
+    color: @foreground;
+    font-weight: bold;
+}
+
+/* Styling for each entry in the list */
+#entry {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: @foreground;
+}
+
+/* Styling for the selected entry */
+#entry:selected {
+    background-color: @color4;
+    color: @background;
+    font-weight: bold;
+}
+
+/* Styling for entry images (e.g., application icons) */
+image {
+    margin-right: 10px;
+}
